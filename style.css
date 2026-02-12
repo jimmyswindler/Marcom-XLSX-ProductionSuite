@@ -1,0 +1,67 @@
+:root {
+  --primary-color: #2563eb;
+  --text-color: #1f2937;
+  --bg-color: #ffffff;
+  --focus-ring: 2px solid #2563eb;
+  --focus-offset: 2px;
+}
+
+/* Box sizing reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  font-size: 1rem; /* Base font size */
+}
+
+/* Accessible focus styles */
+:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
+}
+
+/* Skip link - hidden until focused */
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: var(--bg-color);
+  color: var(--primary-color);
+  padding: 8px;
+  z-index: 100;
+  transform: translateY(-100%);
+  transition: transform 0.2s;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  line-height: 1.2;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* Layout utilities */
+main {
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 1rem;
+}

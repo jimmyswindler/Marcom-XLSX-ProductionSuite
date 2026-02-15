@@ -1,0 +1,126 @@
+:root {
+  --primary-color: #2563eb;
+  --text-color: #1f2937;
+  --bg-color: #ffffff;
+  --focus-ring: 2px solid #2563eb;
+  --focus-offset: 2px;
+}
+
+[data-theme="dark"] {
+  --primary-color: #60a5fa;
+  --text-color: #f3f4f6;
+  --bg-color: #111827;
+}
+
+/* Box sizing reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  font-size: 1rem; /* Base font size */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Accessible focus styles */
+:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
+}
+
+/* Skip link - hidden until focused */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--bg-color);
+  color: var(--primary-color);
+  padding: 8px;
+  z-index: 100;
+  transition: top 0.2s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Theme Toggle */
+#theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  color: var(--text-color);
+  transition: background-color 0.2s;
+  line-height: 1;
+}
+
+#theme-toggle:hover {
+  background-color: rgba(128, 128, 128, 0.1);
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  line-height: 1.2;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* Layout utilities */
+main {
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Print Styles */
+@media print {
+  /* Hide interactive and navigation elements */
+  #theme-toggle,
+  .skip-link,
+  nav {
+    display: none !important;
+  }
+
+  /* Ensure content is readable */
+  body {
+    background-color: white !important;
+    color: black !important;
+  }
+
+  /* Reset layout for print */
+  header, main, footer {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Ensure links are underlined or show URL */
+  a {
+    text-decoration: underline !important;
+    color: black !important;
+  }
+
+  /* Expand links to show URL */
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.9em;
+  }
+}

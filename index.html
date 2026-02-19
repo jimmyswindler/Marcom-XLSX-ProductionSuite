@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App</title>
+    <script>
+        // Immediate execution to prevent FOUT
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const isDark = savedTheme === 'dark' || (!savedTheme && systemDark);
+
+            if (isDark) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header style="display: flex; justify-content: space-between; align-items: center; max-width: 60rem; margin: 0 auto; padding: 1rem;">
+        <nav aria-label="Main navigation">
+            <ul style="list-style: none; padding: 0; margin: 0;">
+                <li><a href="#">Home</a></li>
+            </ul>
+        </nav>
+        <button id="theme-toggle" aria-label="Switch to dark mode">🌙</button>
+    </header>
+
+    <main id="main-content" tabindex="-1">
+        <section>
+            <h1>Welcome</h1>
+            <p>This project is set up with accessibility in mind.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 App</p>
+    </footer>
+</body>
+</html>
